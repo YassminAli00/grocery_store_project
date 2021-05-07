@@ -1,0 +1,27 @@
+
+<ul class="nav justify-content-end">
+    <li class="nav-item">
+        <button type="button" class="btn btn-success" (click)= "gotoCart()"> Checkout </button>
+    </li>
+</ul>
+<br/>
+<div class="container" *ngFor="let item of allItems">
+    <br/>
+    <div class="row" >
+        <div class="col-3"><b>Name:</b> {{item.itemName}}</div> 
+        <div class="col-3"><b>Price: </b> {{item.price}}</div>
+        <div class="col-3"><b>Quantity: </b><input type="number" #itemQuantRef min=0 max={{item.maxQuant}} value={{item.quantity}}></div>
+
+
+        <input type="hidden" #itemNameRef value={{item.itemName}}>
+        <input type="hidden" #itemPriceRef value={{item.price}}>
+        <input type="hidden" #itemMaxQuantRef value={{item.maxQuant}}>
+       
+
+        <div class="col-3"><button type="button" class="btn btn-success" (click)= "saveToCart(itemNameRef.value, itemPriceRef.value, itemQuantRef.value, itemMaxQuantRef.value )"> Add </button></div>
+                       
+        <br/>
+        <hr/>
+        <br/>
+    </div>  
+</div>

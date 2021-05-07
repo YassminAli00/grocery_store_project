@@ -1,0 +1,26 @@
+<h2>Shopping Cart</h2>
+<div class="container" *ngFor="let item of cartItems">
+    <br/>
+    <div class="row" >
+        <div class="col-3"><b>Name:</b> {{item.itemName}}</div> 
+        <div class="col-3"><b>Price: </b> {{item.price}}</div>
+        <div class="col-3"><b>Quantity: </b><input type="number" #itemQuantRef min=1 max={{item.maxQuant}} value={{item.quantity}} (mouseout)= "updateQuantity(itemNameRef.value, itemQuantRef.value, priceRef.value )"></div>
+
+
+        <input type="hidden" #itemNameRef value={{item.itemName}}>
+        <input type="hidden" #priceRef value={{item.price}}>
+    
+        
+        <div class="col-3"><button type="button" class="btn btn-success" (click)= "removeFromCart(itemNameRef.value)"> Remove </button></div>              
+        <br/>
+        <hr/>
+        <br/>
+    </div>  
+</div>
+
+<div>
+    <h2>Total: {{Total}}</h2>
+    <div class="placeOrder"><button type="button" class="btn btn-success" (click)= "placeOrder()"> Place Order</button></div>
+</div>
+
+
